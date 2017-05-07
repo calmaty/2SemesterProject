@@ -37,7 +37,6 @@ public class Neo4jDBTest {
     @After
     public void tearDown() {
     }
-
     /**
      * Test of GetBookAndAuthor method, of class Neo4jDB.
      */
