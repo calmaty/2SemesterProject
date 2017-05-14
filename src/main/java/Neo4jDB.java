@@ -1,5 +1,13 @@
 
+import java.util.ArrayList;
 import java.util.List;
+import org.neo4j.driver.v1.AuthTokens;
+import org.neo4j.driver.v1.Driver;
+import org.neo4j.driver.v1.GraphDatabase;
+import org.neo4j.driver.v1.Record;
+import org.neo4j.driver.v1.Session;
+import org.neo4j.driver.v1.StatementResult;
+import static org.neo4j.driver.v1.Values.parameters;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -11,21 +19,118 @@ import java.util.List;
  *
  * @author Christoffer
  */
-public class Neo4jDB implements DBObject {
+public class Neo4jDB implements IDBObject {
+    
+    Driver driver;
+    
+    public Neo4jDB(){   
+    driver = GraphDatabase.driver(
+                "bolt://localhost:7687",
+                AuthTokens.basic( "neo4j", "class" ) );
+    }
+     
 
-    @Override
-    public List<Book> GetBookAndAuthor(String CityName) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        @Override
+        public List<Book> GetBookAndAuthor(String CityName) {
+          List<Book> books = new ArrayList<>();  
+         
+          if(CityName == "" || CityName.matches(".*\\d+.*") )
+          {
+              Book b = new Book("No Books Found","No Books Found"); 
+              books.add(b);
+          }
+          else
+          {
+                Session session = driver.session();
+                StatementResult result = session.run(
+                    "MATCH (b:Book)-[m:Mentions]->(c:City) " +
+                    "WHERE c.name = " + "\""+CityName+"\"" +
+                    " RETURN  b.title AS title, b.author AS author");
+                        //"MATCH (b:Book)-[m:Mentions]->(c:City) WHERE c.name = {name} RETURN b", parameters("name","London"));
+            while ( result.hasNext() ) {
+            Record record = result.next();
+            System.out.println(record.get("author").asString());
+            Book b;
+            b = new Book(record.get("author").asString(), record.get("title").asString());
+            books.add(b);
+        }
+          
+          session.close();
+          driver.close();
+          }
+          
+          if(books.isEmpty())
+          {
+              Book b = new Book("No Books Found","No Books Found"); 
+              books.add(b);
+          }
+          
+          return books;
     }
 
     @Override
     public List<City> PlotCitiesFromBook(String BookName) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    List<City> cities = new ArrayList<>();  
+         
+          if(BookName == "" || BookName.matches(".*\\d+.*"))
+          {
+              City c = new City("No City Found", new GeoLocation()); 
+              cities.add(c);
+          }
+          else 
+          {
+             Session session = driver.session();
+                StatementResult result = session.run(
+                    "MATCH (b:Book)-[m:Mentions]->(c:City) " +
+                    "WHERE b.title = " + "\""+BookName+"\"" +
+                    " RETURN  c.name AS name");
+                        //"MATCH (b:Book)-[m:Mentions]->(c:City) WHERE c.name = {name} RETURN b", parameters("name","London"));
+            while ( result.hasNext() ) {
+            Record record = result.next();
+            System.out.println(record.get("author").asString());
+            City c = new City(record.get("name").asString(), new GeoLocation()); 
+            cities.add(c);
+            }
+          }
+          
+          if(cities.isEmpty())
+          {
+              City c = new City("No City Found", new GeoLocation()); 
+              cities.add(c);
+          }
+           return cities;    
+        }
 
     @Override
     public List<City> PlotCitiesFromAuthor(String AuthorName) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         List<City> cities = new ArrayList<>();  
+         
+          if(AuthorName == "" || AuthorName.matches(".*\\d+.*"))
+          {
+              City c = new City("No City Found", new GeoLocation()); 
+              cities.add(c);
+          }
+          else 
+          {
+              Session session = driver.session();
+                StatementResult result = session.run(
+                    "MATCH (b:Book)-[m:Mentions]->(c:City) " +
+                    "WHERE b.author = " + "\""+AuthorName+"\"" +
+                    " RETURN  c.name AS name");
+                        //"MATCH (b:Book)-[m:Mentions]->(c:City) WHERE c.name = {name} RETURN b", parameters("name","London"));
+            while ( result.hasNext() ) {
+            Record record = result.next();
+            System.out.println(record.get("author").asString());
+            City c = new City(record.get("name").asString(), new GeoLocation()); 
+            cities.add(c);
+            }
+          }
+          if(cities.isEmpty())
+          {
+              City c = new City("No City Found", new GeoLocation()); 
+              cities.add(c);
+          }
+           return cities;
     }
 
     @Override
