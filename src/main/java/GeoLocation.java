@@ -9,5 +9,15 @@
  * @author Christoffer
  */
 public class GeoLocation {
+    public int longitude;
+    public int latitude;
     
+    public GeoLocation()
+    {}
+    
+    public GeoLocation(int longitude, int latitude)
+    {
+        this.longitude = longitude;
+        this.latitude = latitude;
+    }
 }

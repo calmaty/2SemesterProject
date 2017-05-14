@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author Christoffer
  */
-public interface DBObject {
+public interface IDBObject {
     
 public List<Book> GetBookAndAuthor(String CityName);
 

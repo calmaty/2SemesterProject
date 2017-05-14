@@ -12,7 +12,7 @@ public class DBController {
     
     public Neo4jDB NDB;
     public SqlDB SDB;
-    public DBObject ActiveDB;
+    public IDBObject ActiveDB;
     
     public DBController(Neo4jDB NDB, SqlDB SDB) {
         this.NDB = NDB;
