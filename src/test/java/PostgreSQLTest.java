@@ -7,6 +7,9 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import static io.restassured.RestAssured.*;
+import static io.restassured.matcher.RestAssuredMatchers.*;
+import static org.hamcrest.Matchers.*;
 
 public class PostgreSQLTest {
 
@@ -72,5 +75,23 @@ public class PostgreSQLTest {
         boolean yes = cities.containsAll(resultList);
         assertEquals(true, yes);
 
+    }
+
+    @Test
+    public void restGetBookAndAuthor() {
+        get("http://localhost:8080/bookAndAuthor/London").then()
+                .assertThat().body("books", hasItem(""));
+    }
+
+    @Test
+    public void restGetCitiesFromBook() {
+        get("http://localhost:8080/CitiesFromBooks/phantom").then()
+                .assertThat().body("cities", hasItem(""));
+    }
+
+    @Test
+    public void restGetCitiesFromAuthor() {
+        get("http://localhost:8080/citiesFromAuthor/SørenNielsen").then()
+                .assertThat().body("cities", hasItem(""));
     }
 }
