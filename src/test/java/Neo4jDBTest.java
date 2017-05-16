@@ -215,7 +215,7 @@ public class Neo4jDBTest {
     @Test
     public void testGetBooksByLocationStump()
     {
-        GeoLocation location = new GeoLocation(1,1);
+        GeoLocation location = new GeoLocation(1f,1f);
         StumpDB instance = new StumpDB();
         List<Book> expResult = new ArrayList<>();
         Book b1 = new Book("Søren Nielsen", "Phantom");
@@ -227,7 +227,7 @@ public class Neo4jDBTest {
     @Test
     public void testGetBooksByLocationNegativeInputStump()
     {
-        GeoLocation location = new GeoLocation(-1,-1);
+        GeoLocation location = new GeoLocation(-1f,-1f);
         StumpDB instance = new StumpDB();
         List<Book> books =  instance.GetBooksByLocation(location);
         assertEquals(books.get(0).Title, "No Books Found");
@@ -273,22 +273,20 @@ public class Neo4jDBTest {
         assertEquals(expResult.get(0).Name, result.get(0).Name);
         assertEquals(expResult.get(1).Name, result.get(1).Name);
     }
-//
-//    /**
-//     * Test of GetBooksByLocation method, of class Neo4jDB.
-//     */
-//    @Test
-//    public void testGetBooksByLocation() {
-//        System.out.println("GetBooksByLocation");
-//        GeoLocation Location = new GeoLocation();
-//        Neo4jDB instance = new Neo4jDB();
-//        List<Book> expResult = new ArrayList<Book>();
-//        List<Book> result = instance.GetBooksByLocation(Location);
-//        Book b1 = new Book("Søren Nielsen", "Phantom");
-//        Book b2 = new Book("Hans Bostrup", "Jægeren");
-//        expResult.add(b1);
-//        expResult.add(b2);
-//        assertEquals(expResult, result);
-//    }
+
+    /**
+     * Test of GetBooksByLocation method, of class Neo4jDB.
+     */
+    @Test
+    public void testGetBooksByLocation() {
+        System.out.println("GetBooksByLocation");
+        GeoLocation Location = new GeoLocation(42.2f,42.2f);
+        Neo4jDB instance = new Neo4jDB();
+        List<Book> expResult = new ArrayList<Book>();
+        List<Book> result = instance.GetBooksByLocation(Location);
+        Book b1 = new Book("Søren Nielsen", "Phantom");
+        expResult.add(b1);
+        assertEquals(expResult.get(0).Author, result.get(0).Author);
+    }
     
 }

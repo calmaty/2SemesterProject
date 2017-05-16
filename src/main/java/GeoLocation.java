@@ -9,13 +9,13 @@
  * @author Christoffer
  */
 public class GeoLocation {
-    public int longitude;
-    public int latitude;
+    public float longitude;
+    public float latitude;
     
     public GeoLocation()
     {}
     
-    public GeoLocation(int longitude, int latitude)
+    public GeoLocation(float longitude, float latitude)
     {
         this.longitude = longitude;
         this.latitude = latitude;

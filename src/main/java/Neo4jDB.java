@@ -43,9 +43,9 @@ public class Neo4jDB implements IDBObject {
           {
                 Session session = driver.session();
                 StatementResult result = session.run(
-                    "MATCH (b:Book)-[m:Mentions]->(c:City) " +
+                    "MATCH (a:Author)-[w:Wrote]->(b:Book)-[m:Mentions]->(c:City) " +
                     "WHERE c.name = " + "\""+CityName+"\"" +
-                    " RETURN  b.title AS title, b.author AS author");
+                    " RETURN  b.title AS title, a.name AS author");
                         //"MATCH (b:Book)-[m:Mentions]->(c:City) WHERE c.name = {name} RETURN b", parameters("name","London"));
             while ( result.hasNext() ) {
             Record record = result.next();
@@ -81,7 +81,7 @@ public class Neo4jDB implements IDBObject {
           {
              Session session = driver.session();
                 StatementResult result = session.run(
-                    "MATCH (b:Book)-[m:Mentions]->(c:City) " +
+                    "MATCH (a:Author)-[w:Wrote]->(b:Book)-[m:Mentions]->(c:City) " +
                     "WHERE b.title = " + "\""+BookName+"\"" +
                     " RETURN  c.name AS name");
                         //"MATCH (b:Book)-[m:Mentions]->(c:City) WHERE c.name = {name} RETURN b", parameters("name","London"));
@@ -114,13 +114,12 @@ public class Neo4jDB implements IDBObject {
           {
               Session session = driver.session();
                 StatementResult result = session.run(
-                    "MATCH (b:Book)-[m:Mentions]->(c:City) " +
-                    "WHERE b.author = " + "\""+AuthorName+"\"" +
+                    "MATCH (a:Author)-[w:Wrote]->(b:Book)-[m:Mentions]->(c:City) " +
+                    "WHERE a.name = " + "\""+AuthorName+"\"" +
                     " RETURN  c.name AS name");
                         //"MATCH (b:Book)-[m:Mentions]->(c:City) WHERE c.name = {name} RETURN b", parameters("name","London"));
             while ( result.hasNext() ) {
             Record record = result.next();
-            System.out.println(record.get("author").asString());
             City c = new City(record.get("name").asString(), new GeoLocation()); 
             cities.add(c);
             }
@@ -135,7 +134,37 @@ public class Neo4jDB implements IDBObject {
 
     @Override
     public List<Book> GetBooksByLocation(GeoLocation Location) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         List<Book> books = new ArrayList<>();  
+         
+          if(Location.longitude <=0 || Location.latitude <= 0 )
+          {
+              Book b = new Book("No Books Found","No Books Found"); 
+              books.add(b);
+          }
+          else 
+          {
+              Session session = driver.session();
+                StatementResult result = session.run(
+                  "MATCH (a:Author)-[w:Wrote]->(b:Book)-[m:Mentions]->(c:City) " +
+                  "WITH point({ longitude: c.longitude, latitude: c.latitude }) AS aPoint, point({ longitude: " + Location.longitude + 
+                  ", latitude: " + Location.latitude + "}) AS bPoint, a, b " +
+                  "WITH DISTINCT round(distance(aPoint, bPoint)) AS distance, a, b " +
+                  "WHERE distance < 1000 " +
+                  "RETURN DISTINCT a.name as author, b.title as title");
+                        //"MATCH (b:Book)-[m:Mentions]->(c:City) WHERE c.name = {name} RETURN b", parameters("name","London"));
+            while ( result.hasNext() ) {
+            Record record = result.next();
+            System.out.println(record.get("author").asString());
+            Book b;
+            b = new Book(record.get("author").asString(), record.get("title").asString());
+            books.add(b);
+            }
+        }
+          if(books.isEmpty())
+          {
+              Book b = new Book("No Books Found","No Books Found"); 
+              books.add(b);
+          }
+           return books;
     }
-    
 }
