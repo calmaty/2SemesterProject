@@ -8,7 +8,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import static io.restassured.RestAssured.*;
-import static io.restassured.matcher.RestAssuredMatchers.*;
 import static org.hamcrest.Matchers.*;
 
 public class PostgreSQLTest {
@@ -80,18 +79,18 @@ public class PostgreSQLTest {
     @Test
     public void restGetBookAndAuthor() {
         get("http://localhost:8080/bookAndAuthor/London").then()
-                .assertThat().body("books", hasItem(""));
+                .assertThat().body("books", hasItem("Søren Nielsen"));
     }
 
     @Test
     public void restGetCitiesFromBook() {
         get("http://localhost:8080/CitiesFromBooks/phantom").then()
-                .assertThat().body("cities", hasItem(""));
+                .assertThat().body("cities", hasItem("London"));
     }
 
     @Test
     public void restGetCitiesFromAuthor() {
         get("http://localhost:8080/citiesFromAuthor/SørenNielsen").then()
-                .assertThat().body("cities", hasItem(""));
+                .assertThat().body("cities", hasItem("London"));
     }
 }
