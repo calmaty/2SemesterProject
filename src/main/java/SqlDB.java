@@ -10,7 +10,7 @@ import java.util.List;
  *
  * @author Christoffer
  */
-public class SqlDB implements DBObject {
+public class SqlDB implements IDBObject {
 
     @Override
     public List<Book> GetBookAndAuthor(String CityName) {
