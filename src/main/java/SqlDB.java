@@ -154,6 +154,7 @@ public class SqlDB implements IDBObject {
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
+                System.out.println(rs.toString());
                 String bookTitle = rs.getString("title");
                 String firstName = rs.getString("firstname");
                 String lastName = rs.getString("lastname");
