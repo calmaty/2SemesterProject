@@ -87,8 +87,8 @@ public class SqlDB implements IDBObject {
     }
 
     @Override
-    public List<City> PlotCitiesAndBooksFromAuthor(String AuthorFirstName, String AuthorLastName) {
-        List<City> citiesFromAuthor = new ArrayList<>();
+    public List<EverythingByAuthor> PlotCitiesAndBooksFromAuthor(String AuthorFirstName, String AuthorLastName) {
+        List<EverythingByAuthor> citiesAndBooksFromAuthor = new ArrayList<>();
         Connection con = SqlConnection.getConnection();
         String sql = "SELECT cities.name,cities.latitude,cities.longitude,books.title\n"
                 + "FROM (((cities\n"
@@ -115,7 +115,7 @@ public class SqlDB implements IDBObject {
                 eba.setCityLongitude(longitude);
                 eba.setCityName(cityName);
                 eba.setBookTitle(title);
-                citiesFromAuthor.add(c);
+                citiesAndBooksFromAuthor.add(eba);
             }
 
             rs.close();
@@ -125,7 +125,7 @@ public class SqlDB implements IDBObject {
             System.out.println("Plot Cities From Author failed");
         }
 
-        return citiesFromAuthor;
+        return citiesAndBooksFromAuthor;
 
     }
 
