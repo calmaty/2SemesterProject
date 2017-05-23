@@ -34,11 +34,11 @@ public class PostgreSQLTest {
     @Test
     public void getBookAndAuthor() {
         SqlDB psql = new SqlDB();
-        String city = "London";
+        String city = "kkkk";
         List<Book> books = new ArrayList<>();
         List<Book> resultList = psql.GetBookAndAuthor(city);
-        Book b1 = new Book("Søren Nielsen", "Phantom");
-        Book b2 = new Book("Hans Bostrup", "Jægeren");
+        Book b1 = new Book("e eeeee", "rr");
+        Book b2 = new Book("e eeeee", "rr");
         books.add(b1);
         books.add(b2);
         boolean yes = books.containsAll(resultList);
@@ -49,13 +49,14 @@ public class PostgreSQLTest {
     @Test
     public void getPlotCitiesFromBook() {
         SqlDB psql = new SqlDB();
-        String BookName = "phantom";
+        String BookName = "zz";
         List<City> cities = new ArrayList<>();
         List<City> resultList = psql.PlotCitiesFromBook(BookName);
-        City c1 = new City("London", new GeoLocation());
-        City c2 = new City("New York", new GeoLocation());
+        GeoLocation gl = new GeoLocation();
+        gl.setLatitude((float) 42.46372);
+        gl.setLongitude((float) 1.49129);
+        City c1 = new City("xxxx", gl);
         cities.add(c1);
-        cities.add(c2);
         boolean yes = cities.containsAll(resultList);
         assertEquals(true, yes);
 
@@ -76,23 +77,23 @@ public class PostgreSQLTest {
 
     }
 
-    @Test
-    public void restGetBookAndAuthor() {
-        get("http://localhost:8080/bookAndAuthor/London").then()
-                .assertThat().body("books", hasItem("Søren Nielsen"));
-    }
-
-    @Test
-    public void restGetCitiesFromBook() {
-        get("http://localhost:8080/CitiesFromBooks/phantom").then()
-                .assertThat().body("cities", hasItem("London"));
-    }
-
-    @Test
-    public void restGetCitiesFromAuthor() {
-        get("http://localhost:8080/citiesFromAuthor/SørenNielsen").then()
-                .assertThat().body("cities", hasItem("London"));
-    }
+//    @Test
+//    public void restGetBookAndAuthor() {
+//        get("http://localhost:8080/bookAndAuthor/London").then()
+//                .assertThat().body("books", hasItem("Søren Nielsen"));
+//    }
+//
+//    @Test
+//    public void restGetCitiesFromBook() {
+//        get("http://localhost:8080/CitiesFromBooks/phantom").then()
+//                .assertThat().body("cities", hasItem("London"));
+//    }
+//
+//    @Test
+//    public void restGetCitiesFromAuthor() {
+//        get("http://localhost:8080/citiesFromAuthor/SørenNielsen").then()
+//                .assertThat().body("cities", hasItem("London"));
+//    }
 }
 
 

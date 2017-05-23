@@ -17,5 +17,31 @@ public GeoLocation Location;
         this.Name = Name;
         this.Location = Location;
     }
+
+    public City() {
+    }
+
+   
+
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String Name) {
+        this.Name = Name;
+    }
+
+    public GeoLocation getLocation() {
+        return Location;
+    }
+
+    public void setLocation(GeoLocation Location) {
+        this.Location = Location;
+    }
+    
+    
+    
+    
+    
     
 }
