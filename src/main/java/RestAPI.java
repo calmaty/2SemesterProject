@@ -46,7 +46,7 @@ public class RestAPI {
             String authorFirstName = request.params("authorFirstName");
             String authorLastName = request.params("authorLastName");
             SqlDB sqlDB = new SqlDB();
-            List<City> citiesFromAuthor = sqlDB.PlotCitiesAndBooksFromAuthor(authorFirstName,authorLastName);
+            List<EverythingByAuthor> citiesFromAuthor = sqlDB.PlotCitiesAndBooksFromAuthor(authorFirstName,authorLastName);
             String s = new Gson().toJson(citiesFromAuthor);
             return s;
 
