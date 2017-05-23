@@ -102,6 +102,7 @@ public class SqlDB implements IDBObject {
         String lastAuthorName = AuthorName.substring(indexOfLastCapitolLetter, AuthorName.length());
         City c = new City();
         GeoLocation gl = new GeoLocation();
+        
         try {
             PreparedStatement preparedStatement = con.prepareStatement(sql);
             preparedStatement.setString(1, firstAuthorName);
@@ -139,8 +140,9 @@ public class SqlDB implements IDBObject {
                 + "FROM (((cities\n "
                 + "INNER JOIN citiesinbooks ON cities.id= citiesinbooks.city_id\n "
                 + "INNER JOIN books ON cities.id= books.id)\n "
-                + "INNER JOIN bookauthors ON books.id = bookauthors.book_id)) where latitude = ? and longitude = ? ";
-
+                + "INNER JOIN bookauthors ON books.id = bookauthors.book_id)) "
+                + "where latitude = ? and longitude = ? ";
+//
         Book b = new Book();
         float lat = Location.getLatitude();
         float lon = Location.getLongitude();
@@ -148,7 +150,7 @@ public class SqlDB implements IDBObject {
         try {
             PreparedStatement preparedStatement = con.prepareStatement(sql);
             preparedStatement.setFloat(1, lat);
-            preparedStatement.setFloat(2, lon);
+            preparedStatement.setDouble(2, lon);
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
