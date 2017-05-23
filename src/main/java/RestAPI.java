@@ -1,10 +1,15 @@
 
+import com.google.gson.Gson;
 import java.util.List;
 import static spark.Spark.*;
 
 public class RestAPI {
 
+    Gson gson = new Gson();
+
     public static void main(String[] args) {
+        port(8080);
+
         get("/geolocation/:latitude/:longitude", (request, response) -> {
             String latitude = request.params("latitude");
             String longitude = request.params("longitude");
@@ -21,6 +26,7 @@ public class RestAPI {
             String city = request.params("city");
             SqlDB sqlDB = new SqlDB();
             List<Book> booksAndAuthors = sqlDB.GetBookAndAuthor(city);
+            response.status(200);
             return booksAndAuthors;
         });
 
@@ -28,15 +34,15 @@ public class RestAPI {
             String book = request.params("book");
             SqlDB sqlDB = new SqlDB();
             List<City> citiesFromBook = sqlDB.PlotCitiesFromBook(book);
-            return citiesFromBook;        
+            return citiesFromBook;
         });
 
         get("/citiesFromAuthor/:author", (request, response) -> {
             String author = request.params("author");
             SqlDB sqlDB = new SqlDB();
             List<City> citiesFromAuthor = sqlDB.PlotCitiesFromAuthor(author);
-            return citiesFromAuthor;        
-                
+            return citiesFromAuthor;
+
         });
 
     }

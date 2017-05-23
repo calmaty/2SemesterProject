@@ -11,12 +11,8 @@
 public class Book {
     
 public String Title;
-public String Author;
-
-    public Book(String Title, String Author) {
-        this.Title = Title;
-        this.Author = Author;
-    }
+public String authorFirstName;
+public String authorLastName;
 
     public Book() {
     }
@@ -29,17 +25,26 @@ public String Author;
         this.Title = Title;
     }
 
-    public String getAuthor() {
-        return Author;
+    public String getAuthorFirstName() {
+        return authorFirstName;
     }
 
-    public void setAuthor(String Author) {
-        this.Author = Author;
+    public void setAuthorFirstName(String authorFirstName) {
+        this.authorFirstName = authorFirstName;
+    }
+
+    public String getAuthorLastName() {
+        return authorLastName;
+    }
+
+    public void setAuthorLastName(String authorLastName) {
+        this.authorLastName = authorLastName;
     }
 
     @Override
     public String toString() {
-        return "Book{" + "Title=" + Title + ", Author=" + Author + '}';
+        return "Book{" + "Title=" + Title + ", authorFirstName=" + authorFirstName + ", authorLastName=" + authorLastName + '}';
     }
+
     
 }
