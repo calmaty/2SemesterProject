@@ -150,7 +150,7 @@ public class SqlDB implements IDBObject {
         try {
             PreparedStatement preparedStatement = con.prepareStatement(sql);
             preparedStatement.setFloat(1, lat);
-            preparedStatement.setDouble(2, lon);
+            preparedStatement.setFloat(2, lon);
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
