@@ -32,7 +32,7 @@ public class SqlDB implements IDBObject {
             while (rs.next()) {
                 String firstName = rs.getString("firstname");
                 String bookTitle = rs.getString("title");
-                String lastName = rs.getString("lasttname");
+                String lastName = rs.getString("lastname");
                 b.setTitle(bookTitle);
                 b.setAuthorFirstName(firstName);
                 b.setAuthorLastName(lastName);
