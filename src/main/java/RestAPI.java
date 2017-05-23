@@ -5,9 +5,16 @@ import static spark.Spark.*;
 public class RestAPI {
 
     public static void main(String[] args) {
-        get("/geolocation/:city", (request, response) -> {
-            String s = "s";
-            return s;
+        get("/geolocation/:latitude/:longitude", (request, response) -> {
+            String latitude = request.params("latitude");
+            String longitude = request.params("longitude");
+            GeoLocation gloc = new GeoLocation();
+            gloc.setLatitude(Float.valueOf(latitude));
+            gloc.setLongitude(Float.valueOf(longitude));
+            SqlDB sqlDB = new SqlDB();
+            List<Book> booksFromLocation = sqlDB.GetBooksByLocation(gloc);
+            response.status(200);
+            return booksFromLocation;
         });
 
         get("/bookAndAuthor/:city", (request, response) -> {
