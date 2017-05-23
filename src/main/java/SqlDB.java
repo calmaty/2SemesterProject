@@ -87,36 +87,34 @@ public class SqlDB implements IDBObject {
     }
 
     @Override
-    public List<City> PlotCitiesFromAuthor(String AuthorName) {
+    public List<City> PlotCitiesAndBooksFromAuthor(String AuthorFirstName, String AuthorLastName) {
         List<City> citiesFromAuthor = new ArrayList<>();
         Connection con = SqlConnection.getConnection();
-        String sql = "SELECT cities.name,cities.latitude,cities.longitude\n"
+        String sql = "SELECT cities.name,cities.latitude,cities.longitude,books.title\n"
                 + "FROM (((cities\n"
                 + "INNER JOIN books ON cities.id= books.id\n"
                 + "INNER JOIN bookauthors ON books.id = bookauthors.book_id)\n"
-                + "INNER JOIN citiesinbooks ON cities.id= citiesinbooks.city_id))\n"
-                + "where bookauthors.firstname = ? and bookauthors.lastname= ?";
-
-        int indexOfLastCapitolLetter = Utility.lastIndexOfUCL(AuthorName);
-        String firstAuthorName = AuthorName.substring(0, indexOfLastCapitolLetter - 1);
-        String lastAuthorName = AuthorName.substring(indexOfLastCapitolLetter, AuthorName.length());
+                + "INNER JOIN citiesinbooks ON cities.id= citiesinbooks.city_id))"
+                + " where bookauthors.firstname = ? and bookauthors.lastname= ? ";
+        EverythingByAuthor eba = new EverythingByAuthor();
         City c = new City();
-        GeoLocation gl = new GeoLocation();
         
+        GeoLocation gl = new GeoLocation();
         try {
             PreparedStatement preparedStatement = con.prepareStatement(sql);
-            preparedStatement.setString(1, firstAuthorName);
-            preparedStatement.setString(2, lastAuthorName);
+            preparedStatement.setString(1, AuthorFirstName);
+            preparedStatement.setString(2, AuthorLastName);
 
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 String cityName = rs.getString("name");
                 float latitude = rs.getFloat("latitude");
                 float longitude = rs.getFloat("longitude");
-                gl.setLatitude(latitude);
-                gl.setLongitude(longitude);
-                c.setName(cityName);
-                c.setLocation(gl);
+                String title = rs.getString("title");
+                eba.setCityLatitude(latitude);
+                eba.setCityLongitude(longitude);
+                eba.setCityName(cityName);
+                eba.setBookTitle(title);
                 citiesFromAuthor.add(c);
             }
 
@@ -142,7 +140,7 @@ public class SqlDB implements IDBObject {
                 + "INNER JOIN books ON cities.id= books.id)\n "
                 + "INNER JOIN bookauthors ON books.id = bookauthors.book_id)) "
                 + "where latitude = ? and longitude = ? ";
-//
+
         Book b = new Book();
         float lat = Location.getLatitude();
         float lon = Location.getLongitude();
@@ -175,5 +173,6 @@ public class SqlDB implements IDBObject {
         return citiesByLocation;
 
     }
+
 
 }

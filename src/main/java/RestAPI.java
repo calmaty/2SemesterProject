@@ -42,11 +42,13 @@ public class RestAPI {
             return s;
         });
 
-        get("/citiesFromAuthor/:author", (request, response) -> {
-            String author = request.params("author");
+        get("/citiesFromAuthor/:authorFirstName/:authorLastName", (request, response) -> {
+            String authorFirstName = request.params("authorFirstName");
+            String authorLastName = request.params("authorLastName");
             SqlDB sqlDB = new SqlDB();
-            List<City> citiesFromAuthor = sqlDB.PlotCitiesFromAuthor(author);
-            return citiesFromAuthor;
+            List<City> citiesFromAuthor = sqlDB.PlotCitiesAndBooksFromAuthor(authorFirstName,authorLastName);
+            String s = new Gson().toJson(citiesFromAuthor);
+            return s;
 
         });
 

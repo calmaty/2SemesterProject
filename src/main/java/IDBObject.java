@@ -17,7 +17,7 @@ public List<Book> GetBookAndAuthor(String CityName);
 
 public List<City> PlotCitiesFromBook(String BookName);
 
-public List<City> PlotCitiesFromAuthor(String AuthorName);
+public List<City> PlotCitiesAndBooksFromAuthor(String AuthorFirstName ,String AuthorLastName);
 
 public List<Book> GetBooksByLocation (GeoLocation Location);
 
