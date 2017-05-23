@@ -8,7 +8,16 @@ public class RestAPI {
     Gson gson = new Gson();
 
     public static void main(String[] args) {
+        
         port(8080);
+
+        get("/bookAndAuthor/:city", (request, response) -> {
+            String city = request.params("city");
+            SqlDB sqlDB = new SqlDB();
+            List<Book> booksAndAuthors = sqlDB.GetBookAndAuthor(city);
+            response.status(200);
+            return booksAndAuthors;
+        });
 
         get("/geolocation/:latitude/:longitude", (request, response) -> {
             String latitude = request.params("latitude");
@@ -20,14 +29,6 @@ public class RestAPI {
             List<Book> booksFromLocation = sqlDB.GetBooksByLocation(gloc);
             response.status(200);
             return booksFromLocation;
-        });
-
-        get("/bookAndAuthor/:city", (request, response) -> {
-            String city = request.params("city");
-            SqlDB sqlDB = new SqlDB();
-            List<Book> booksAndAuthors = sqlDB.GetBookAndAuthor(city);
-            response.status(200);
-            return booksAndAuthors;
         });
 
         get("/citiesFromBooks/:book", (request, response) -> {
