@@ -28,6 +28,7 @@ public class RestAPI {
             gloc.setLatitude(lat);
             gloc.setLongitude(lon);
             SqlDB sqlDB = new SqlDB();
+
             List<Book> booksFromLocation = sqlDB.GetBooksByLocation(gloc);
             response.status(200);
             return booksFromLocation;
