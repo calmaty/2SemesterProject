@@ -24,21 +24,20 @@ public class SqlDB implements IDBObject {
                 + "INNER JOIN citiesinbooks ON cities.id= citiesinbooks.city_id)"
                 + " where cities.name = ?";
         Book b = new Book();
-        StringBuilder sb = new StringBuilder();
         try {
             PreparedStatement preparedStatement = con.prepareStatement(sql);
             preparedStatement.setString(1, CityName);
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
-                String bookTitle = rs.getString("title");
                 String firstName = rs.getString("firstname");
+                String bookTitle = rs.getString("title");
                 String lastName = rs.getString("lasttname");
-                sb.append(firstName);
-                sb.append(" ");
-                sb.append(lastName);
                 b.setTitle(bookTitle);
-                b.setAuthor(sb.toString());
+                b.setAuthorFirstName(firstName);
+                b.setAuthorLastName(lastName);
+               
+                booksAndAuthors.add(b);
             }
 
             rs.close();
@@ -74,6 +73,7 @@ public class SqlDB implements IDBObject {
                 gl.setLongitude(longitude);
                 c.setName(cityName);
                 c.setLocation(gl);
+                citiesFromBook.add(c);
             }
             rs.close();
             preparedStatement.close();
@@ -116,6 +116,7 @@ public class SqlDB implements IDBObject {
                 gl.setLongitude(longitude);
                 c.setName(cityName);
                 c.setLocation(gl);
+                citiesFromAuthor.add(c);
             }
 
             rs.close();
@@ -145,7 +146,6 @@ public class SqlDB implements IDBObject {
         GeoLocation gl = new GeoLocation();
         gl.setLatitude(Location.getLatitude());
         gl.setLongitude(Location.getLongitude());
-        StringBuilder sb= new StringBuilder();
         try {
             PreparedStatement preparedStatement = con.prepareStatement(sql);
             preparedStatement.setFloat(1, gl.getLatitude());
@@ -156,10 +156,10 @@ public class SqlDB implements IDBObject {
                 String firstName = rs.getString("firstname");
                 String lastName = rs.getString("lastname");
                 b.setTitle(title);
-                sb.append(firstName);
-                sb.append(" ");
-                sb.append(lastName);
-                b.setAuthor(sb.toString());
+               
+                b.setAuthorFirstName(firstName);
+                b.setAuthorLastName(lastName);
+                citiesByLocation.add(b);
                 
             }
             rs.close();
