@@ -5,7 +5,7 @@ import static spark.Spark.*;
 
 public class RestAPI {
 
-    Gson gson = new Gson();
+   static Gson gson = new Gson();
 
     public static void main(String[] args) {
         
@@ -23,8 +23,10 @@ public class RestAPI {
             String latitude = request.params("latitude");
             String longitude = request.params("longitude");
             GeoLocation gloc = new GeoLocation();
-            gloc.setLatitude(Float.valueOf(latitude));
-            gloc.setLongitude(Float.valueOf(longitude));
+            float lat = Float.valueOf(latitude);
+            float lon = Float.valueOf(longitude);
+            gloc.setLatitude(lat);
+            gloc.setLongitude(lon);
             SqlDB sqlDB = new SqlDB();
             List<Book> booksFromLocation = sqlDB.GetBooksByLocation(gloc);
             response.status(200);
@@ -35,7 +37,8 @@ public class RestAPI {
             String book = request.params("book");
             SqlDB sqlDB = new SqlDB();
             List<City> citiesFromBook = sqlDB.PlotCitiesFromBook(book);
-            return citiesFromBook;
+            String s = new Gson().toJson(citiesFromBook);
+            return s;
         });
 
         get("/citiesFromAuthor/:author", (request, response) -> {

@@ -135,32 +135,35 @@ public class SqlDB implements IDBObject {
         List<Book> citiesByLocation = new ArrayList<>();
         Connection con = SqlConnection.getConnection();
 
-        String sql = "SELECT books.title , bookauthors.firstname,bookauthors.lastname\n" +
-        "FROM (((cities\n" +
-        "INNER JOIN citiesinbooks ON cities.id= citiesinbooks.city_id\n" +
-        "INNER JOIN books ON cities.id= books.id)\n" +
-        "INNER JOIN bookauthors ON books.id = bookauthors.book_id)\n" +
-        ") where latitude = ? and longitude = ?";
+        String sql = "SELECT books.title , bookauthors.firstname,bookauthors.lastname\n " +
+        "FROM (((cities\n " +
+        "INNER JOIN citiesinbooks ON cities.id= citiesinbooks.city_id\n " +
+        "INNER JOIN books ON cities.id= books.id)\n " +
+        "INNER JOIN bookauthors ON books.id = bookauthors.book_id)) where latitude = ? and longitude = ? ";
         
         Book b = new Book();
         GeoLocation gl = new GeoLocation();
-        gl.setLatitude(Location.getLatitude());
-        gl.setLongitude(Location.getLongitude());
+        float lat = Location.getLatitude();
+        float lon = Location.getLongitude();
+        String slat = String.valueOf(lat);
+        String slon = String.valueOf(lon);
+       // gl.setLongitude(Location.getLongitude());
+        
         try {
             PreparedStatement preparedStatement = con.prepareStatement(sql);
-            preparedStatement.setFloat(1, gl.getLatitude());
-            preparedStatement.setFloat(2, gl.getLongitude());
+            preparedStatement.setFloat(1, lat);
+            preparedStatement.setFloat(2, lon);
+            
             ResultSet rs = preparedStatement.executeQuery();
+            
             while (rs.next()) {
                 String title = rs.getString("title");
                 String firstName = rs.getString("firstname");
                 String lastName = rs.getString("lastname");
                 b.setTitle(title);
-               
                 b.setAuthorFirstName(firstName);
                 b.setAuthorLastName(lastName);
                 citiesByLocation.add(b);
-                
             }
             rs.close();
             preparedStatement.close();
