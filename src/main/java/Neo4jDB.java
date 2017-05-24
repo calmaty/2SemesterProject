@@ -156,7 +156,7 @@ public class Neo4jDB implements IDBObject {
                   "WITH point({ longitude: c.longitude, latitude: c.latitude }) AS aPoint, point({ longitude: " + Location.longitude + 
                   ", latitude: " + Location.latitude + "}) AS bPoint, a, b " +
                   "WITH DISTINCT round(distance(aPoint, bPoint)) AS distance, a, b " +
-                  "WHERE distance < 1000 " +
+                  "WHERE distance < 100000 " +
                   "RETURN DISTINCT a.name as author, b.title as title");
                         //"MATCH (b:Book)-[m:Mentions]->(c:City) WHERE c.name = {name} RETURN b", parameters("name","London"));
             while ( result.hasNext() ) {
