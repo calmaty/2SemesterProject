@@ -1,5 +1,5 @@
 # Gutenberg Project 2. Semester
-#Data collection:
+# Data collection:
 For this project we have collected 37.595 english books from the gutenberg website.
 All book is in txt format, and was collected with a server, setup with a vagrantfile given to us by Helge. A guide for the setup of the server can be seen on Helges github:  https://github.com/HelgeCPH/db_course_nosql/tree/master/book_download
  
@@ -22,7 +22,7 @@ ExtractCitiesFromeBooks:
 This Program runs through all the txt files in a folder. It reads each txt line by line and finds the words starting with capital letters. It then compares the words with the city name from our cities csv, and then adds the found city´s  id in the Book_mentions_cities csv alongside the current books id. 
 To run through the 37.595 books, it took around 36 hours to completed.
 
-#Setup and Database Engines: 
+# Setup and Database Engines: 
 We have choose to use the relational database PostgreSQL, which some of us was more use to.
 Our second database is a Neo4j graph database, which we have used during this course. 
  
@@ -41,7 +41,7 @@ We had also planned  to make a website that would use our API, But didn't have t
  
 So in our solution your will get the search result out as a Json on the api webPage. 
 
-#Data Models:
+# Data Models:
 CSV files:
 Books {id, title, language }
 Authors {name}
@@ -82,7 +82,7 @@ Made on all id values.
  
 We decided not to have an Authors table because it would be redundant.  We have the same data in our bookauthors table and in the future it will impact database performance when the project grows out of its proportions now.  Also not having redundant data allows us to optimize our bookauthors table better.
 
-#Data Importation:
+# Data Importation:
 Since we have to import the data into to different database type, we decided to convert the data we needed into csv, which then can be imported into pretty much any database.
  
 For the importation into the neo4j we initially wanted to import the data through the Neoj4 import tool, like it was show by Craig from Neo4j. Since the import would have been much fast and we would have been able to use the command lines in a vagrant file to automatically import the data to Database when run the Vagrant.
@@ -111,7 +111,7 @@ Our solution was to simply add check for /n and /r in the rdf converts program a
 On like Neo4j, PostgreSQL do not see that a book title inside quotation marks is a string, so it read the single quotes in title as a breakpoint, and that result in error.
 Since we did not have time to figure something, we simply remove all single quotes in the name and titles. So we could get the data imported.
 
-#Rest API input data: works
+# Rest API input data: works
 Geolocation:   Latitude: 51.50853   Longitude: -0.12574   City name: London
  
 Author: Jefferson, Thomas  Book id: 1  Book Title: The Declaration of Independence of the United States of America
@@ -133,7 +133,7 @@ Query 5:
 Graph DataBase:
 
 
-#Our recommendation:
+# Our recommendation:
 We recommend that you use (graph database) Neo4j for project with larger data set like this.
 Because it is faster especially in case where you would have use multiple joins.
 The cypher queue is also easier to understand than a sql query with multiple joins. 
