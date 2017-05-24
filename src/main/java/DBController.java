@@ -20,6 +20,9 @@ public class DBController {
         ActiveDB = NDB;
     }
 
+    public DBController() {
+    }
+
     
 
     public void SwichDB()

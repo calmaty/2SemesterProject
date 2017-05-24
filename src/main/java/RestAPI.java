@@ -6,9 +6,13 @@ import static spark.Spark.*;
 public class RestAPI {
 
    static Gson gson = new Gson();
-
+   
+   static DBController DBC;
+   
     public static void main(String[] args) {
         
+        DBC = new DBController(new Neo4jDB(), new SqlDB());
+        DBC.SwichDB();
         port(8080);
 
         get("/bookAndAuthor/:city", (request, response) -> {
@@ -27,26 +31,22 @@ public class RestAPI {
             float lon = Float.valueOf(longitude);
             gloc.setLatitude(lat);
             gloc.setLongitude(lon);
-            SqlDB sqlDB = new SqlDB();
 
-            List<Book> booksFromLocation = sqlDB.GetBooksByLocation(gloc);
+            List<Book> booksFromLocation = DBC.ActiveDB.GetBooksByLocation(gloc);
             response.status(200);
             return booksFromLocation;
         });
 
         get("/citiesFromBooks/:book", (request, response) -> {
             String book = request.params("book");
-            SqlDB sqlDB = new SqlDB();
-            List<City> citiesFromBook = sqlDB.PlotCitiesFromBook(book);
+            List<City> citiesFromBook = DBC.ActiveDB.PlotCitiesFromBook(book);
             String s = new Gson().toJson(citiesFromBook);
             return s;
         });
 
         get("/citiesFromAuthor/:authorName", (request, response) -> {
             String authorName = request.params("authorName");
-            SqlDB sqlDB = new SqlDB();
-            DBConntroller DBC = new DBConntroller();
-            List<EverythingByAuthor> citiesFromAuthor = sqlDB.PlotCitiesAndBooksFromAuthor(authorName);
+            List<EverythingByAuthor> citiesFromAuthor = DBC.ActiveDB.PlotCitiesAndBooksFromAuthor(authorName);
             String s = new Gson().toJson(citiesFromAuthor);
             return s;
 
