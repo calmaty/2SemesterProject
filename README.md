@@ -118,6 +118,8 @@ Author: Jefferson, Thomas  Book id: 1  Book Title: The Declaration of Independen
 
 #20 queries Times test
 
+We could not make in time for the deadline
+
 Retional Database:
 Query 1:
 
