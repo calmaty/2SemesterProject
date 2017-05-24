@@ -33,7 +33,7 @@ public class PostgreSQLTest {
     public PostgreSQLTest() {
     }
 
-    public void medianOfTests() {
+    public void averageOfTests() {
         long averageFirstFive = (totalTime1 + totalTime2 + totalTime3 + totalTime4 + totalTime5) / 5;
         System.out.println(averageFirstFive);
         long averageSecondFive = (totalTime6 + totalTime7 + totalTime8 + totalTime9 + totalTime10) / 5;
@@ -42,6 +42,16 @@ public class PostgreSQLTest {
         System.out.println(averageThirdFive);
         long averageFourthFive = (totalTime16 + totalTime17 + totalTime18 + totalTime19 + totalTime20) / 5;
         System.out.println(averageFourthFive);
+    }
+
+    public void medianOfTests() {
+        long[] longs = {totalTime1, totalTime2, totalTime3, totalTime4, totalTime5,
+            totalTime6, totalTime7, totalTime8, totalTime9,
+            totalTime10, totalTime11, totalTime12, totalTime13, totalTime14, totalTime15,
+            totalTime16, totalTime17, totalTime18, totalTime19, totalTime20};
+
+        long median = (longs[10] + longs[11]) / 2;
+        System.out.println(median);
     }
 
     @BeforeClass
@@ -377,6 +387,10 @@ public class PostgreSQLTest {
         if (!resultList.isEmpty()) {
             yes = true;
         }
+
+        averageOfTests();
+        medianOfTests();
+
         assertEquals(true, yes);
     }
 //    @Test
