@@ -37,6 +37,11 @@ public String Author;
         return "Book{" + "Title=" + Title + ", Author=" + Author + '}';
     }
 
+    public Book(String Title, String Author) {
+        this.Title = Title;
+        this.Author = Author;
+    }
+
    
 
 

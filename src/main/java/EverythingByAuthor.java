@@ -12,6 +12,13 @@ public class EverythingByAuthor {
 
     String bookTitle;
     String cityName;
+
+    public EverythingByAuthor(String bookTitle, String cityName, float cityLatitude, float cityLongitude) {
+        this.bookTitle = bookTitle;
+        this.cityName = cityName;
+        this.cityLatitude = cityLatitude;
+        this.cityLongitude = cityLongitude;
+    }
     float cityLatitude;
     float cityLongitude;
 
