@@ -25,8 +25,8 @@ public class Neo4jDB implements IDBObject {
     
     public Neo4jDB(){   
     driver = GraphDatabase.driver(
-                "bolt://localhost:7687",
-                AuthTokens.basic( "neo4j", "class" ) );
+                "bolt://127.0.0.1:7687",
+                AuthTokens.basic( "neo4j", "123" ) );
     }
      
 
@@ -119,7 +119,7 @@ public class Neo4jDB implements IDBObject {
                 StatementResult result = session.run(
                     "MATCH (a:Author)-[w:Wrote]->(b:Book)-[m:Mentions]->(c:City) " +
                     "WHERE a.name = " + "\""+AuthorName+"\"" +
-                    " RETURN  b.title AS title c.name AS name c.latitude AS latitude c.longitude AS longitude");
+                    " RETURN  b.title AS title, c.name AS name, c.latitude AS latitude, c.longitude AS longitude");
                         //"MATCH (b:Book)-[m:Mentions]->(c:City) WHERE c.name = {name} RETURN b", parameters("name","London"));
             while ( result.hasNext() ) {
             Record record = result.next();

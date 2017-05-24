@@ -12,13 +12,12 @@ public class RestAPI {
     public static void main(String[] args) {
         
         DBC = new DBController(new Neo4jDB(), new SqlDB());
-        DBC.SwichDB();
         port(8080);
 
         get("/bookAndAuthor/:city", (request, response) -> {
             String city = request.params("city");
-            SqlDB sqlDB = new SqlDB();
-            List<Book> booksAndAuthors = sqlDB.GetBookAndAuthor(city);
+            //SqlDB sqlDB = new SqlDB();
+            List<Book> booksAndAuthors = DBC.ActiveDB.GetBookAndAuthor(city);
             response.status(200);
             return booksAndAuthors;
         });
