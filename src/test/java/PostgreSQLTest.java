@@ -73,7 +73,7 @@ public class PostgreSQLTest {
     @Test
     public void getBookAndAuthor1() {
         SqlDB psql = new SqlDB();
-        String city = "kkkk";
+        String city = "London";
         boolean yes = false;
         long startTime = System.currentTimeMillis();
         List<Book> resultList = psql.GetBookAndAuthor(city);
@@ -83,6 +83,7 @@ public class PostgreSQLTest {
         if (!resultList.isEmpty()) {
             yes = true;
         }
+        System.out.println("Time for test 1 " + totalTime1);
         assertEquals(true, yes);
 
     }
@@ -90,7 +91,7 @@ public class PostgreSQLTest {
     @Test
     public void getBookAndAuthor2() {
         SqlDB psql = new SqlDB();
-        String city = "kkkk";
+        String city = "ordino";
         boolean yes = false;
         long startTime = System.currentTimeMillis();
         List<Book> resultList = psql.GetBookAndAuthor(city);
@@ -100,6 +101,7 @@ public class PostgreSQLTest {
         if (!resultList.isEmpty()) {
             yes = true;
         }
+        System.out.println("Time for test 2 " + totalTime2);
         assertEquals(true, yes);
 
     }
@@ -107,7 +109,7 @@ public class PostgreSQLTest {
     @Test
     public void getBookAndAuthor3() {
         SqlDB psql = new SqlDB();
-        String city = "kkkk";
+        String city = "Mainz";
         boolean yes = false;
         long startTime = System.currentTimeMillis();
         List<Book> resultList = psql.GetBookAndAuthor(city);
@@ -117,6 +119,7 @@ public class PostgreSQLTest {
         if (!resultList.isEmpty()) {
             yes = true;
         }
+        System.out.println("Time for test 3 " + totalTime3);
         assertEquals(true, yes);
 
     }
@@ -124,7 +127,7 @@ public class PostgreSQLTest {
     @Test
     public void getBookAndAuthor4() {
         SqlDB psql = new SqlDB();
-        String city = "kkkk";
+        String city = "Newport";
         boolean yes = false;
         long startTime = System.currentTimeMillis();
         List<Book> resultList = psql.GetBookAndAuthor(city);
@@ -134,6 +137,7 @@ public class PostgreSQLTest {
         if (!resultList.isEmpty()) {
             yes = true;
         }
+        System.out.println("Time for test 4 " + totalTime4);
         assertEquals(true, yes);
 
     }
@@ -141,7 +145,7 @@ public class PostgreSQLTest {
     @Test
     public void getBookAndAuthor5() {
         SqlDB psql = new SqlDB();
-        String city = "kkkk";
+        String city = "Lews";
         boolean yes = false;
         long startTime = System.currentTimeMillis();
         List<Book> resultList = psql.GetBookAndAuthor(city);
@@ -151,6 +155,7 @@ public class PostgreSQLTest {
         if (!resultList.isEmpty()) {
             yes = true;
         }
+        System.out.println("Time for test 5 " + totalTime5);
         assertEquals(true, yes);
 
     }
@@ -158,7 +163,7 @@ public class PostgreSQLTest {
     @Test
     public void getPlotCitiesFromBook1() {
         SqlDB psql = new SqlDB();
-        String BookName = "zz";
+        String BookName = "Carmilla";
         boolean yes = false;
         long startTime = System.currentTimeMillis();
         List<City> resultList = psql.PlotCitiesFromBook(BookName);
@@ -167,6 +172,7 @@ public class PostgreSQLTest {
         if (!resultList.isEmpty()) {
             yes = true;
         }
+        System.out.println("Time for test 6 " + totalTime6);
         assertEquals(true, yes);
     }
 
@@ -182,13 +188,15 @@ public class PostgreSQLTest {
         if (!resultList.isEmpty()) {
             yes = true;
         }
+        System.out.println("Time for test 7 " + totalTime7);
         assertEquals(true, yes);
     }
+    
 
     @Test
     public void getPlotCitiesFromBook3() {
         SqlDB psql = new SqlDB();
-        String BookName = "zz";
+        String BookName = "Ourika";
         boolean yes = false;
         long startTime = System.currentTimeMillis();
         List<City> resultList = psql.PlotCitiesFromBook(BookName);
@@ -197,13 +205,14 @@ public class PostgreSQLTest {
         if (!resultList.isEmpty()) {
             yes = true;
         }
+        System.out.println("Time for test 8 " + totalTime8);
         assertEquals(true, yes);
     }
 
     @Test
     public void getPlotCitiesFromBook4() {
         SqlDB psql = new SqlDB();
-        String BookName = "zz";
+        String BookName = "Poems";
         boolean yes = false;
         long startTime = System.currentTimeMillis();
         List<City> resultList = psql.PlotCitiesFromBook(BookName);
@@ -212,13 +221,14 @@ public class PostgreSQLTest {
         if (!resultList.isEmpty()) {
             yes = true;
         }
+        System.out.println("Time for test 9 " + totalTime9);
         assertEquals(true, yes);
     }
 
     @Test
     public void getPlotCitiesFromBook5() {
         SqlDB psql = new SqlDB();
-        String BookName = "zz";
+        String BookName = "Wailing Wall";
         boolean yes = false;
         long startTime = System.currentTimeMillis();
         List<City> resultList = psql.PlotCitiesFromBook(BookName);
@@ -227,6 +237,7 @@ public class PostgreSQLTest {
         if (!resultList.isEmpty()) {
             yes = true;
         }
+        System.out.println("Time for test 10 " + totalTime10);
         assertEquals(true, yes);
     }
 
@@ -242,13 +253,14 @@ public class PostgreSQLTest {
         if (!resultList.isEmpty()) {
             yes = true;
         }
+        System.out.println("Time for test 11 " + totalTime11);
         assertEquals(true, yes);
     }
 
     @Test
     public void getcitiesFromAuthor2() {
         SqlDB psql = new SqlDB();
-        String AuthorName = "Søren Nielsen";
+        String AuthorName = "Anonymos";
         boolean yes = false;
         long startTime = System.currentTimeMillis();
         List<EverythingByAuthor> resultList = psql.PlotCitiesAndBooksFromAuthor(AuthorName);
@@ -257,13 +269,14 @@ public class PostgreSQLTest {
         if (!resultList.isEmpty()) {
             yes = true;
         }
+        System.out.println("Time for test 12 " + totalTime12);
         assertEquals(true, yes);
     }
 
     @Test
     public void getcitiesFromAuthor3() {
         SqlDB psql = new SqlDB();
-        String AuthorName = "Søren Nielsen";
+        String AuthorName = "muir, John";
         boolean yes = false;
         long startTime = System.currentTimeMillis();
         List<EverythingByAuthor> resultList = psql.PlotCitiesAndBooksFromAuthor(AuthorName);
@@ -272,13 +285,14 @@ public class PostgreSQLTest {
         if (!resultList.isEmpty()) {
             yes = true;
         }
+        System.out.println("Time for test 13 " + totalTime13);
         assertEquals(true, yes);
     }
 
     @Test
     public void getcitiesFromAuthor4() {
         SqlDB psql = new SqlDB();
-        String AuthorName = "Søren Nielsen";
+        String AuthorName = "Sophocles";
         boolean yes = false;
         long startTime = System.currentTimeMillis();
         List<EverythingByAuthor> resultList = psql.PlotCitiesAndBooksFromAuthor(AuthorName);
@@ -287,13 +301,14 @@ public class PostgreSQLTest {
         if (!resultList.isEmpty()) {
             yes = true;
         }
+        System.out.println("Time for test 14 " + totalTime14);
         assertEquals(true, yes);
     }
 
     @Test
     public void getcitiesFromAuthor5() {
         SqlDB psql = new SqlDB();
-        String AuthorName = "Søren Nielsen";
+        String AuthorName = "Unknown";
         boolean yes = false;
         long startTime = System.currentTimeMillis();
         List<EverythingByAuthor> resultList = psql.PlotCitiesAndBooksFromAuthor(AuthorName);
@@ -302,6 +317,7 @@ public class PostgreSQLTest {
         if (!resultList.isEmpty()) {
             yes = true;
         }
+        System.out.println("Time for test 15 " + totalTime15);
         assertEquals(true, yes);
     }
 
@@ -319,6 +335,7 @@ public class PostgreSQLTest {
         if (!resultList.isEmpty()) {
             yes = true;
         }
+        System.out.println("Time for test 16 " + totalTime16);
         assertEquals(true, yes);
     }
 
@@ -326,8 +343,8 @@ public class PostgreSQLTest {
     public void getcitiesFromLocation2() {
         SqlDB psql = new SqlDB();
         GeoLocation gloc = new GeoLocation();
-        gloc.setLatitude(51.50853f);
-        gloc.setLongitude(-0.12574f);
+        gloc.setLatitude(11f);
+        gloc.setLongitude(-12f);
         boolean yes = false;
         long startTime = System.currentTimeMillis();
         List<Book> resultList = psql.GetBooksByLocation(gloc);
@@ -336,6 +353,7 @@ public class PostgreSQLTest {
         if (!resultList.isEmpty()) {
             yes = true;
         }
+        System.out.println("Time for test 17 " + totalTime17);
         assertEquals(true, yes);
     }
 
@@ -343,8 +361,8 @@ public class PostgreSQLTest {
     public void getcitiesFromLocation3() {
         SqlDB psql = new SqlDB();
         GeoLocation gloc = new GeoLocation();
-        gloc.setLatitude(51.50853f);
-        gloc.setLongitude(-0.12574f);
+        gloc.setLatitude(40f);
+        gloc.setLongitude(16f);
         boolean yes = false;
         long startTime = System.currentTimeMillis();
         List<Book> resultList = psql.GetBooksByLocation(gloc);
@@ -353,6 +371,7 @@ public class PostgreSQLTest {
         if (!resultList.isEmpty()) {
             yes = true;
         }
+        System.out.println("Time for test 18 " + totalTime18);
         assertEquals(true, yes);
     }
 
@@ -360,8 +379,8 @@ public class PostgreSQLTest {
     public void getcitiesFromLocation4() {
         SqlDB psql = new SqlDB();
         GeoLocation gloc = new GeoLocation();
-        gloc.setLatitude(51.50853f);
-        gloc.setLongitude(-0.12574f);
+        gloc.setLatitude(-20f);
+        gloc.setLongitude(-2f);
         boolean yes = false;
         long startTime = System.currentTimeMillis();
         List<Book> resultList = psql.GetBooksByLocation(gloc);
@@ -370,6 +389,7 @@ public class PostgreSQLTest {
         if (!resultList.isEmpty()) {
             yes = true;
         }
+        System.out.println("Time for test 19 " + totalTime19);
         assertEquals(true, yes);
     }
 
@@ -377,8 +397,8 @@ public class PostgreSQLTest {
     public void getcitiesFromLocation5() {
         SqlDB psql = new SqlDB();
         GeoLocation gloc = new GeoLocation();
-        gloc.setLatitude(51.50853f);
-        gloc.setLongitude(-0.12574f);
+        gloc.setLatitude(13f);
+        gloc.setLongitude(-57f);
         boolean yes = false;
         long startTime = System.currentTimeMillis();
         List<Book> resultList = psql.GetBooksByLocation(gloc);
@@ -391,6 +411,7 @@ public class PostgreSQLTest {
         averageOfTests();
         medianOfTests();
 
+        System.out.println("Time for test 20 " + totalTime20);
         assertEquals(true, yes);
     }
 //    @Test
