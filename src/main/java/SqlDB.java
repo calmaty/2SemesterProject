@@ -52,7 +52,7 @@ public class SqlDB implements IDBObject {
     @Override
     public List<City> PlotCitiesFromBook(String BookName) {
         List<City> citiesFromBook = new ArrayList<>();
-        Connection con = SqlConnection.getConnection();
+
         String sql = "SELECT DISTINCT cities.name,cities.latitude,cities.longitude\n"
                 + "FROM ((books\n"
                 + "INNER JOIN citiesinbooks ON citiesinbooks.book_id = books.id)\n"
@@ -60,6 +60,7 @@ public class SqlDB implements IDBObject {
                 + "where books.title = ?";
 
         try {
+            Connection con = SqlConnection.getConnection();
             PreparedStatement preparedStatement = con.prepareStatement(sql);
             preparedStatement.setString(1, BookName);
             ResultSet rs = preparedStatement.executeQuery();
@@ -80,7 +81,7 @@ public class SqlDB implements IDBObject {
             SqlConnection.releaseConnection(con);
         } catch (SQLException e) {
             System.out.println("PlotCities From Books failed");
-        }
+        } 
 
         return citiesFromBook;
 

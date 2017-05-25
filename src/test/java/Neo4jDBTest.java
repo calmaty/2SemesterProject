@@ -84,6 +84,7 @@ public class Neo4jDBTest {
         if (!resultList.isEmpty()) {
             yes = true;
         }
+        System.out.println("Time for test 1 " +totalTime1 );
         assertEquals(true, yes);
 
     }
@@ -101,6 +102,7 @@ public class Neo4jDBTest {
         if (!resultList.isEmpty()) {
             yes = true;
         }
+        System.out.println("Time for test 2 " +totalTime2 );
         assertEquals(true, yes);
 
     }
@@ -118,6 +120,7 @@ public class Neo4jDBTest {
         if (!resultList.isEmpty()) {
             yes = true;
         }
+        System.out.println("Time for test 3 " +totalTime3 );
         assertEquals(true, yes);
 
     }
@@ -135,6 +138,7 @@ public class Neo4jDBTest {
         if (!resultList.isEmpty()) {
             yes = true;
         }
+        System.out.println("Time for test 4 " +totalTime4 );
         assertEquals(true, yes);
 
     }
@@ -152,6 +156,7 @@ public class Neo4jDBTest {
         if (!resultList.isEmpty()) {
             yes = true;
         }
+        System.out.println("Time for test 5 " +totalTime5 );
         assertEquals(true, yes);
 
     }
@@ -168,6 +173,7 @@ public class Neo4jDBTest {
         if (!resultList.isEmpty()) {
             yes = true;
         }
+        System.out.println("Time for test 6 " +totalTime6 );
         assertEquals(true, yes);
     }
 
@@ -183,6 +189,7 @@ public class Neo4jDBTest {
         if (!resultList.isEmpty()) {
             yes = true;
         }
+        System.out.println("Time for test 7 " +totalTime7 );
         assertEquals(true, yes);
     }
 
@@ -198,6 +205,7 @@ public class Neo4jDBTest {
         if (!resultList.isEmpty()) {
             yes = true;
         }
+        System.out.println("Time for test 8 " +totalTime8 );
         assertEquals(true, yes);
     }
 
@@ -213,6 +221,7 @@ public class Neo4jDBTest {
         if (!resultList.isEmpty()) {
             yes = true;
         }
+        System.out.println("Time for test 9 " +totalTime9 );
         assertEquals(true, yes);
     }
 
@@ -228,6 +237,7 @@ public class Neo4jDBTest {
         if (!resultList.isEmpty()) {
             yes = true;
         }
+        System.out.println("Time for test 10 " +totalTime10 );
         assertEquals(true, yes);
     }
 
@@ -243,6 +253,7 @@ public class Neo4jDBTest {
         if (!resultList.isEmpty()) {
             yes = true;
         }
+        System.out.println("Time for test 11 " +totalTime11 );
         assertEquals(true, yes);
     }
 
@@ -258,6 +269,7 @@ public class Neo4jDBTest {
         if (!resultList.isEmpty()) {
             yes = true;
         }
+        System.out.println("Time for test 12 " +totalTime12 );
         assertEquals(true, yes);
     }
 
@@ -273,6 +285,7 @@ public class Neo4jDBTest {
         if (!resultList.isEmpty()) {
             yes = true;
         }
+        System.out.println("Time for test 13 " +totalTime1);
         assertEquals(true, yes);
     }
 
