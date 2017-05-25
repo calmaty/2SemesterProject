@@ -10,7 +10,7 @@ public class RestAPI {
     static DBController DBC;
 
     public static void main(String[] args) {
-        Neo4jDB NDB = new Neo4jDB();
+        //Neo4jDB NDB = new Neo4jDB();
         DBC = new DBController(new Neo4jDB(), new SqlDB());
         DBC.SwichDB();
         port(8080);
