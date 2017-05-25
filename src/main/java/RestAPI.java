@@ -12,7 +12,7 @@ public class RestAPI {
     public static void main(String[] args) {
         //Neo4jDB NDB = new Neo4jDB();
         DBC = new DBController(new Neo4jDB(), new SqlDB());
-        DBC.SwichDB();
+        //DBC.SwichDB();
         port(8080);
 
         get("/bookAndAuthor/:city", (request, response) -> {

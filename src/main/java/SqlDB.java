@@ -90,6 +90,7 @@ public class SqlDB implements IDBObject {
     @Override
     public List<EverythingByAuthor> PlotCitiesAndBooksFromAuthor(String AuthorFirstName) {
         List<EverythingByAuthor> citiesAndBooksFromAuthor = new ArrayList<>();
+        
         Connection con = SqlConnection.getConnection();
         String sql = "SELECT DISTINCT cities.name,cities.latitude,cities.longitude,books.title\n"
                 + "FROM (((bookauthors\n"

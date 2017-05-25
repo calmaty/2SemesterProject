@@ -143,13 +143,13 @@ public class Neo4jDB implements IDBObject {
     public List<Book> GetBooksByLocation(GeoLocation Location) {
          List<Book> books = new ArrayList<>();  
          
-          if(Location.longitude <=0 || Location.latitude <= 0 )
-          {
-              Book b = new Book("No Books Found","No Books Found"); 
-              books.add(b);
-          }
-          else 
-          {
+//          if(Location.longitude == || Location.latitude <= 0 )
+//          {
+//              Book b = new Book("No Books Found","No Books Found"); 
+//              books.add(b);
+//          }
+//          else 
+//          {
               Session session = driver.session();
                 StatementResult result = session.run(
                   "MATCH (a:Author)-[w:Wrote]->(b:Book)-[m:Mentions]->(c:City) " +
@@ -166,7 +166,7 @@ public class Neo4jDB implements IDBObject {
             b = new Book(record.get("author").asString(), record.get("title").asString());
             books.add(b);
             }
-        }
+//        }
           if(books.isEmpty())
           {
               Book b = new Book("No Books Found","No Books Found"); 
