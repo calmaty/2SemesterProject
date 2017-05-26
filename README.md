@@ -116,23 +116,9 @@ Geolocation:   Latitude: 51.50853   Longitude: -0.12574   City name: London
  
 Author: Jefferson, Thomas  Book id: 1  Book Title: The Declaration of Independence of the United States of America
 
-#20 queries Times test
+#20 queries Times test Results
 
-We could not make in time for the deadline
-
-Retional Database:
-Query 1:
-
-Query 2:
-
-Query 3:
-
-Query 4:
-
-Query 5:
-
-
-Graph DataBase:
+See the DataBase_Times_Tests_results pdf
 
 
 # Our recommendation:
