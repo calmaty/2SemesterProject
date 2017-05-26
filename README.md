@@ -111,12 +111,12 @@ Our solution was to simply add check for /n and /r in the rdf converts program a
 On like Neo4j, PostgreSQL do not see that a book title inside quotation marks is a string, so it read the single quotes in title as a breakpoint, and that result in error.
 Since we did not have time to figure something, we simply remove all single quotes in the name and titles. So we could get the data imported.
 
-# Rest API input data: works
+# Rest API input data Examples: 
 Geolocation:   Latitude: 51.50853   Longitude: -0.12574   City name: London
  
 Author: Jefferson, Thomas  Book id: 1  Book Title: The Declaration of Independence of the United States of America
 
-#20 queries Times test Results
+# 20 queries Times test Results
 
 See the DataBase_Times_Tests_results pdf
 
