@@ -34,26 +34,7 @@ public class Neo4jDBTest {
     public Neo4jDBTest() {
     }
 
-    public void averageOfTests() {
-        long averageFirstFive = (totalTime1 + totalTime2 + totalTime3 + totalTime4 + totalTime5) / 5;
-        System.out.println(averageFirstFive);
-        long averageSecondFive = (totalTime6 + totalTime7 + totalTime8 + totalTime9 + totalTime10) / 5;
-        System.out.println(averageSecondFive);
-        long averageThirdFive = (totalTime11 + totalTime12 + totalTime13 + totalTime14 + totalTime15) / 5;
-        System.out.println(averageThirdFive);
-        long averageFourthFive = (totalTime16 + totalTime17 + totalTime18 + totalTime19 + totalTime20) / 5;
-        System.out.println(averageFourthFive);
-    }
 
-    public void medianOfTests() {
-        long[] longs = {totalTime1, totalTime2, totalTime3, totalTime4, totalTime5,
-            totalTime6, totalTime7, totalTime8, totalTime9,
-            totalTime10, totalTime11, totalTime12, totalTime13, totalTime14, totalTime15,
-            totalTime16, totalTime17, totalTime18, totalTime19, totalTime20};
-
-        long median = (longs[10] + longs[11]) / 2;
-        System.out.println(median);
-    }
 
     @BeforeClass
     public static void setUpClass() {
@@ -71,375 +52,362 @@ public class Neo4jDBTest {
     public void tearDown() {
     }
 
-//    @Test
-//    public void getBookAndAuthor1() {
-//        
-//        Neo4jDB psql = new Neo4jDB();
-//        String city = "London";
-//        boolean yes = false;
-//        long startTime = System.currentTimeMillis();
-//        List<Book> resultList = psql.GetBookAndAuthor(city);
-//        long endTime = System.currentTimeMillis();
-//        totalTime1 = endTime - startTime;
-//
-//        if (!resultList.isEmpty()) {
-//            yes = true;
-//        }
-//        System.out.println("Time for test 1 " +totalTime1 );
-//        assertEquals(true, yes);
-//
-//    }
-//
-//    @Test
-//    public void getBookAndAuthor2() {
-//        Neo4jDB psql = new Neo4jDB();
-//        String city = "kkkk";
-//        boolean yes = false;
-//        long startTime = System.currentTimeMillis();
-//        List<Book> resultList = psql.GetBookAndAuthor(city);
-//        long endTime = System.currentTimeMillis();
-//        totalTime2 = endTime - startTime;
-//
-//        if (!resultList.isEmpty()) {
-//            yes = true;
-//        }
-//        System.out.println("Time for test 2 " +totalTime2 );
-//        assertEquals(true, yes);
-//
-//    }
-//
-//    @Test
-//    public void getBookAndAuthor3() {
-//        Neo4jDB psql = new Neo4jDB();
-//        String city = "kkkk";
-//        boolean yes = false;
-//        long startTime = System.currentTimeMillis();
-//        List<Book> resultList = psql.GetBookAndAuthor(city);
-//        long endTime = System.currentTimeMillis();
-//        totalTime3 = endTime - startTime;
-//
-//        if (!resultList.isEmpty()) {
-//            yes = true;
-//        }
-//        System.out.println("Time for test 3 " +totalTime3 );
-//        assertEquals(true, yes);
-//
-//    }
-//
-//    @Test
-//    public void getBookAndAuthor4() {
-//        Neo4jDB psql = new Neo4jDB();
-//        String city = "kkkk";
-//        boolean yes = false;
-//        long startTime = System.currentTimeMillis();
-//        List<Book> resultList = psql.GetBookAndAuthor(city);
-//        long endTime = System.currentTimeMillis();
-//        totalTime4 = endTime - startTime;
-//
-//        if (!resultList.isEmpty()) {
-//            yes = true;
-//        }
-//        System.out.println("Time for test 4 " +totalTime4 );
-//        assertEquals(true, yes);
-//
-//    }
-//
-//    @Test
-//    public void getBookAndAuthor5() {
-//        Neo4jDB psql = new Neo4jDB();
-//        String city = "kkkk";
-//        boolean yes = false;
-//        long startTime = System.currentTimeMillis();
-//        List<Book> resultList = psql.GetBookAndAuthor(city);
-//        long endTime = System.currentTimeMillis();
-//        totalTime5 = endTime - startTime;
-//
-//        if (!resultList.isEmpty()) {
-//            yes = true;
-//        }
-//        System.out.println("Time for test 5 " +totalTime5 );
-//        assertEquals(true, yes);
-//
-//    }
-//
-//    @Test
-//    public void getPlotCitiesFromBook1() {
-//        Neo4jDB psql = new Neo4jDB();
-//        String BookName = "zz";
-//        boolean yes = false;
-//        long startTime = System.currentTimeMillis();
-//        List<City> resultList = psql.PlotCitiesFromBook(BookName);
-//        long endTime = System.currentTimeMillis();
-//        totalTime6 = endTime - startTime;
-//        if (!resultList.isEmpty()) {
-//            yes = true;
-//        }
-//        System.out.println("Time for test 6 " +totalTime6 );
-//        assertEquals(true, yes);
-//    }
-//
-//    @Test
-//    public void getPlotCitiesFromBook2() {
-//        Neo4jDB psql = new Neo4jDB();
-//        String BookName = "Beltane the Smith";
-//        boolean yes = false;
-//        long startTime = System.currentTimeMillis();
-//        List<City> resultList = psql.PlotCitiesFromBook(BookName);
-//        long endTime = System.currentTimeMillis();
-//        totalTime7 = endTime - startTime;
-//        if (!resultList.isEmpty()) {
-//            yes = true;
-//        }
-//        System.out.println("Time for test 7 " +totalTime7 );
-//        assertEquals(true, yes);
-//    }
-//
-//    @Test
-//    public void getPlotCitiesFromBook3() {
-//        Neo4jDB psql = new Neo4jDB();
-//        String BookName = "zz";
-//        boolean yes = false;
-//        long startTime = System.currentTimeMillis();
-//        List<City> resultList = psql.PlotCitiesFromBook(BookName);
-//        long endTime = System.currentTimeMillis();
-//        totalTime8 = endTime - startTime;
-//        if (!resultList.isEmpty()) {
-//            yes = true;
-//        }
-//        System.out.println("Time for test 8 " +totalTime8 );
-//        assertEquals(true, yes);
-//    }
-//
-//    @Test
-//    public void getPlotCitiesFromBook4() {
-//        Neo4jDB psql = new Neo4jDB();
-//        String BookName = "zz";
-//        boolean yes = false;
-//        long startTime = System.currentTimeMillis();
-//        List<City> resultList = psql.PlotCitiesFromBook(BookName);
-//        long endTime = System.currentTimeMillis();
-//        totalTime9 = endTime - startTime;
-//        if (!resultList.isEmpty()) {
-//            yes = true;
-//        }
-//        System.out.println("Time for test 9 " +totalTime9 );
-//        assertEquals(true, yes);
-//    }
-//
-//    @Test
-//    public void getPlotCitiesFromBook5() {
-//        Neo4jDB psql = new Neo4jDB();
-//        String BookName = "zz";
-//        boolean yes = false;
-//        long startTime = System.currentTimeMillis();
-//        List<City> resultList = psql.PlotCitiesFromBook(BookName);
-//        long endTime = System.currentTimeMillis();
-//        totalTime10 = endTime - startTime;
-//        if (!resultList.isEmpty()) {
-//            yes = true;
-//        }
-//        System.out.println("Time for test 10 " +totalTime10 );
-//        assertEquals(true, yes);
-//    }
-//
-//    @Test
-//    public void getcitiesFromAuthor1() {
-//        Neo4jDB psql = new Neo4jDB();
-//        String AuthorName = "Søren Nielsen";
-//        boolean yes = false;
-//        long startTime = System.currentTimeMillis();
-//        List<EverythingByAuthor> resultList = psql.PlotCitiesAndBooksFromAuthor(AuthorName);
-//        long endTime = System.currentTimeMillis();
-//        totalTime11 = endTime - startTime;
-//        if (!resultList.isEmpty()) {
-//            yes = true;
-//        }
-//        System.out.println("Time for test 11 " +totalTime11 );
-//        assertEquals(true, yes);
-//    }
-//
-//    @Test
-//    public void getcitiesFromAuthor2() {
-//        Neo4jDB psql = new Neo4jDB();
-//        String AuthorName = "Søren Nielsen";
-//        boolean yes = false;
-//        long startTime = System.currentTimeMillis();
-//        List<EverythingByAuthor> resultList = psql.PlotCitiesAndBooksFromAuthor(AuthorName);
-//        long endTime = System.currentTimeMillis();
-//        totalTime12 = endTime - startTime;
-//        if (!resultList.isEmpty()) {
-//            yes = true;
-//        }
-//        System.out.println("Time for test 12 " +totalTime12 );
-//        assertEquals(true, yes);
-//    }
-//
-//    @Test
-//    public void getcitiesFromAuthor3() {
-//        Neo4jDB psql = new Neo4jDB();
-//        String AuthorName = "Søren Nielsen";
-//        boolean yes = false;
-//        long startTime = System.currentTimeMillis();
-//        List<EverythingByAuthor> resultList = psql.PlotCitiesAndBooksFromAuthor(AuthorName);
-//        long endTime = System.currentTimeMillis();
-//        totalTime13 = endTime - startTime;
-//        if (!resultList.isEmpty()) {
-//            yes = true;
-//        }
-//        System.out.println("Time for test 13 " +totalTime1);
-//        assertEquals(true, yes);
-//    }
-//
-//    @Test
-//    public void getcitiesFromAuthor4() {
-//        Neo4jDB psql = new Neo4jDB();
-//        String AuthorName = "Søren Nielsen";
-//        boolean yes = false;
-//        long startTime = System.currentTimeMillis();
-//        List<EverythingByAuthor> resultList = psql.PlotCitiesAndBooksFromAuthor(AuthorName);
-//        long endTime = System.currentTimeMillis();
-//        totalTime14 = endTime - startTime;
-//        if (!resultList.isEmpty()) {
-//            yes = true;
-//        }
-//        assertEquals(true, yes);
-//    }
-//
-//    @Test
-//    public void getcitiesFromAuthor5() {
-//        Neo4jDB psql = new Neo4jDB();
-//        String AuthorName = "Søren Nielsen";
-//        boolean yes = false;
-//        long startTime = System.currentTimeMillis();
-//        List<EverythingByAuthor> resultList = psql.PlotCitiesAndBooksFromAuthor(AuthorName);
-//        long endTime = System.currentTimeMillis();
-//        totalTime15 = endTime - startTime;
-//        if (!resultList.isEmpty()) {
-//            yes = true;
-//        }
-//        assertEquals(true, yes);
-//    }
-//
-//    @Test
-//    public void getcitiesFromLocation1() {
-//        Neo4jDB psql = new Neo4jDB();
-//        GeoLocation gloc = new GeoLocation();
-//        gloc.setLatitude(51.50853f);
-//        gloc.setLongitude(-0.12574f);
-//        boolean yes = false;
-//        long startTime = System.currentTimeMillis();
-//        List<Book> resultList = psql.GetBooksByLocation(gloc);
-//        long endTime = System.currentTimeMillis();
-//        totalTime16 = endTime - startTime;
-//        if (!resultList.isEmpty()) {
-//            yes = true;
-//        }
-//        System.out.println("Time for test 16 " + totalTime16);
-//        assertEquals(true, yes);
-//    }
-//
-//    @Test
-//    public void getcitiesFromLocation2() {
-//        Neo4jDB psql = new Neo4jDB();
-//        GeoLocation gloc = new GeoLocation();
-//        gloc.setLatitude(51.50853f);
-//        gloc.setLongitude(-0.12574f);
-//        boolean yes = false;
-//        long startTime = System.currentTimeMillis();
-//        List<Book> resultList = psql.GetBooksByLocation(gloc);
-//        long endTime = System.currentTimeMillis();
-//        totalTime17 = endTime - startTime;
-//        if (!resultList.isEmpty()) {
-//            yes = true;
-//        }
-//        assertEquals(true, yes);
-//    }
-//
-//    @Test
-//    public void getcitiesFromLocation3() {
-//        Neo4jDB psql = new Neo4jDB();
-//        GeoLocation gloc = new GeoLocation();
-//        gloc.setLatitude(51.50853f);
-//        gloc.setLongitude(-0.12574f);
-//        boolean yes = false;
-//        long startTime = System.currentTimeMillis();
-//        List<Book> resultList = psql.GetBooksByLocation(gloc);
-//        long endTime = System.currentTimeMillis();
-//        totalTime18 = endTime - startTime;
-//        if (!resultList.isEmpty()) {
-//            yes = true;
-//        }
-//        assertEquals(true, yes);
-//    }
-//
-//    @Test
-//    public void getcitiesFromLocation4() {
-//        Neo4jDB psql = new Neo4jDB();
-//        GeoLocation gloc = new GeoLocation();
-//        gloc.setLatitude(51.50853f);
-//        gloc.setLongitude(-0.12574f);
-//        boolean yes = false;
-//        long startTime = System.currentTimeMillis();
-//        List<Book> resultList = psql.GetBooksByLocation(gloc);
-//        long endTime = System.currentTimeMillis();
-//        totalTime19 = endTime - startTime;
-//        if (!resultList.isEmpty()) {
-//            yes = true;
-//        }
-//        assertEquals(true, yes);
-//    }
-//
-//    @Test
-//    public void getcitiesFromLocation5() {
-//        Neo4jDB psql = new Neo4jDB();
-//        GeoLocation gloc = new GeoLocation();
-//        gloc.setLatitude(51.50853f);
-//        gloc.setLongitude(-0.12574f);
-//        boolean yes = false;
-//        long startTime = System.currentTimeMillis();
-//        List<Book> resultList = psql.GetBooksByLocation(gloc);
-//        long endTime = System.currentTimeMillis();
-//        totalTime20 = endTime - startTime;
-//        if (!resultList.isEmpty()) {
-//            yes = true;
-//        }
-//
-//        averageOfTests();
-//        medianOfTests();
-//
-//        assertEquals(true, yes);
-//    }
-//    @Test
-//    public void restGetBookAndAuthor() {
-//        get("http://localhost:8080/bookAndAuthor/London").then()
-//                .assertThat().body("books", hasItem("Søren Nielsen"));
-//    }
-//
-//    @Test
-//    public void restGetCitiesFromBook() {
-//        get("http://localhost:8080/CitiesFromBooks/phantom").then()
-//                .assertThat().body("cities", hasItem("London"));
-//    }
-//
-//    @Test
-//    public void restGetCitiesFromAuthor() {
-//        get("http://localhost:8080/citiesFromAuthor/SørenNielsen").then()
-//                .assertThat().body("cities", hasItem("London"));
-//    }
+    @Test
+    public void getBookAndAuthor1() {
+        
+        Neo4jDB psql = new Neo4jDB();
+        String city = "London";
+        boolean yes = false;
+        long startTime = System.currentTimeMillis();
+        List<Book> resultList = psql.GetBookAndAuthor(city);
+        long endTime = System.currentTimeMillis();
+        totalTime1 = endTime - startTime;
+
+        if (!resultList.isEmpty()) {
+            yes = true;
+        }
+        System.out.println("Time for test 1 " +totalTime1 );
+        assertEquals(true, yes);
+
+    }
+
+    @Test
+    public void getBookAndAuthor2() {
+        Neo4jDB psql = new Neo4jDB();
+        String city = "Westminster";
+        boolean yes = false;
+        long startTime = System.currentTimeMillis();
+        List<Book> resultList = psql.GetBookAndAuthor(city);
+        long endTime = System.currentTimeMillis();
+        totalTime2 = endTime - startTime;
+
+        if (!resultList.isEmpty()) {
+            yes = true;
+        }
+        System.out.println("Time for test 2 " +totalTime2 );
+        assertEquals(true, yes);
+
+    }
+
+    @Test
+    public void getBookAndAuthor3() {
+        Neo4jDB psql = new Neo4jDB();
+        String city = "Mainz";
+        boolean yes = false;
+        long startTime = System.currentTimeMillis();
+        List<Book> resultList = psql.GetBookAndAuthor(city);
+        long endTime = System.currentTimeMillis();
+        totalTime3 = endTime - startTime;
+
+        if (!resultList.isEmpty()) {
+            yes = true;
+        }
+        System.out.println("Time for test 3 " +totalTime3 );
+        assertEquals(true, yes);
+
+    }
+
+    @Test
+    public void getBookAndAuthor4() {
+        Neo4jDB psql = new Neo4jDB();
+        String city = "Newport";
+        boolean yes = false;
+        long startTime = System.currentTimeMillis();
+        List<Book> resultList = psql.GetBookAndAuthor(city);
+        long endTime = System.currentTimeMillis();
+        totalTime4 = endTime - startTime;
+
+        if (!resultList.isEmpty()) {
+            yes = true;
+        }
+        System.out.println("Time for test 4 " +totalTime4 );
+        assertEquals(true, yes);
+
+    }
+
+    @Test
+    public void getBookAndAuthor5() {
+        Neo4jDB psql = new Neo4jDB();
+        String city = "Damascus";
+        boolean yes = false;
+        long startTime = System.currentTimeMillis();
+        List<Book> resultList = psql.GetBookAndAuthor(city);
+        long endTime = System.currentTimeMillis();
+        totalTime5 = endTime - startTime;
+
+        if (!resultList.isEmpty()) {
+            yes = true;
+        }
+        System.out.println("Time for test 5 " +totalTime5 );
+        assertEquals(true, yes);
+
+    }
+
+    @Test
+    public void getPlotCitiesFromBook1() {
+        Neo4jDB psql = new Neo4jDB();
+        String BookName = "`Abdu  l-Bahá in London";
+        boolean yes = false;
+        long startTime = System.currentTimeMillis();
+        List<City> resultList = psql.PlotCitiesFromBook(BookName);
+        long endTime = System.currentTimeMillis();
+        totalTime6 = endTime - startTime;
+        if (!resultList.isEmpty()) {
+            yes = true;
+        }
+        System.out.println("Time for test 6 " +totalTime6 );
+        assertEquals(true, yes);
+    }
+
+    @Test
+    public void getPlotCitiesFromBook2() {
+        Neo4jDB psql = new Neo4jDB();
+        String BookName = "Beltane the Smith";
+        boolean yes = false;
+        long startTime = System.currentTimeMillis();
+        List<City> resultList = psql.PlotCitiesFromBook(BookName);
+        long endTime = System.currentTimeMillis();
+        totalTime7 = endTime - startTime;
+        if (!resultList.isEmpty()) {
+            yes = true;
+        }
+        System.out.println("Time for test 7 " +totalTime7 );
+        assertEquals(true, yes);
+    }
+
+    @Test
+    public void getPlotCitiesFromBook3() {
+        Neo4jDB psql = new Neo4jDB();
+        String BookName = "Tenterhooks";
+        boolean yes = false;
+        long startTime = System.currentTimeMillis();
+        List<City> resultList = psql.PlotCitiesFromBook(BookName);
+        long endTime = System.currentTimeMillis();
+        totalTime8 = endTime - startTime;
+        if (!resultList.isEmpty()) {
+            yes = true;
+        }
+        System.out.println("Time for test 8 " +totalTime8 );
+        assertEquals(true, yes);
+    }
+
+    @Test
+    public void getPlotCitiesFromBook4() {
+        Neo4jDB psql = new Neo4jDB();
+        String BookName = "Poems";
+        boolean yes = false;
+        long startTime = System.currentTimeMillis();
+        List<City> resultList = psql.PlotCitiesFromBook(BookName);
+        long endTime = System.currentTimeMillis();
+        totalTime9 = endTime - startTime;
+        if (!resultList.isEmpty()) {
+            yes = true;
+        }
+        System.out.println("Time for test 9 " +totalTime9 );
+        assertEquals(true, yes);
+    }
+
+    @Test
+    public void getPlotCitiesFromBook5() {
+        Neo4jDB psql = new Neo4jDB();
+        String BookName = "Happiness and Marriage";
+        boolean yes = false;
+        long startTime = System.currentTimeMillis();
+        List<City> resultList = psql.PlotCitiesFromBook(BookName);
+        long endTime = System.currentTimeMillis();
+        totalTime10 = endTime - startTime;
+        if (!resultList.isEmpty()) {
+            yes = true;
+        }
+        System.out.println("Time for test 10 " +totalTime10 );
+        assertEquals(true, yes);
+    }
+
+    @Test
+    public void getcitiesFromAuthor1() {
+        Neo4jDB psql = new Neo4jDB();
+        String AuthorName = "`Abdu  l-Bahá";
+        boolean yes = false;
+        long startTime = System.currentTimeMillis();
+        List<EverythingByAuthor> resultList = psql.PlotCitiesAndBooksFromAuthor(AuthorName);
+        long endTime = System.currentTimeMillis();
+        totalTime11 = endTime - startTime;
+        if (!resultList.isEmpty()) {
+            yes = true;
+        }
+        System.out.println("Time for test 11 " +totalTime11 );
+        assertEquals(true, yes);
+    }
+
+    @Test
+    public void getcitiesFromAuthor2() {
+        Neo4jDB psql = new Neo4jDB();
+        String AuthorName = "A-No. 1";
+        boolean yes = false;
+        long startTime = System.currentTimeMillis();
+        List<EverythingByAuthor> resultList = psql.PlotCitiesAndBooksFromAuthor(AuthorName);
+        long endTime = System.currentTimeMillis();
+        totalTime12 = endTime - startTime;
+        if (!resultList.isEmpty()) {
+            yes = true;
+        }
+        System.out.println("Time for test 12 " +totalTime12 );
+        assertEquals(true, yes);
+    }
+
+    @Test
+    public void getcitiesFromAuthor3() {
+        Neo4jDB psql = new Neo4jDB();
+        String AuthorName = "A. L. O. E.";
+        boolean yes = false;
+        long startTime = System.currentTimeMillis();
+        List<EverythingByAuthor> resultList = psql.PlotCitiesAndBooksFromAuthor(AuthorName);
+        long endTime = System.currentTimeMillis();
+        totalTime13 = endTime - startTime;
+        if (!resultList.isEmpty()) {
+            yes = true;
+        }
+        System.out.println("Time for test 13 " +totalTime1);
+        assertEquals(true, yes);
+    }
+
+    @Test
+    public void getcitiesFromAuthor4() {
+        Neo4jDB psql = new Neo4jDB();
+        String AuthorName = "Sophocles";
+        boolean yes = false;
+        long startTime = System.currentTimeMillis();
+        List<EverythingByAuthor> resultList = psql.PlotCitiesAndBooksFromAuthor(AuthorName);
+        long endTime = System.currentTimeMillis();
+        totalTime14 = endTime - startTime;
+        if (!resultList.isEmpty()) {
+            yes = true;
+        }
+        System.out.println("Time for test 14 " +totalTime14);
+        assertEquals(true, yes);
+    }
+
+    @Test
+    public void getcitiesFromAuthor5() {
+        Neo4jDB psql = new Neo4jDB();
+        String AuthorName = "Euripides";
+        boolean yes = false;
+        long startTime = System.currentTimeMillis();
+        List<EverythingByAuthor> resultList = psql.PlotCitiesAndBooksFromAuthor(AuthorName);
+        long endTime = System.currentTimeMillis();
+        totalTime15 = endTime - startTime;
+        if (!resultList.isEmpty()) {
+            yes = true;
+        }
+        System.out.println("Time for test 15 " +totalTime15);
+        assertEquals(true, yes);
+    }
+
+    @Test
+    public void getcitiesFromLocation1() {
+        Neo4jDB psql = new Neo4jDB();
+        GeoLocation gloc = new GeoLocation();
+        gloc.setLatitude(51.50853f);
+        gloc.setLongitude(-0.12574f);
+        boolean yes = false;
+        long startTime = System.currentTimeMillis();
+        List<Book> resultList = psql.GetBooksByLocation(gloc);
+        long endTime = System.currentTimeMillis();
+        totalTime16 = endTime - startTime;
+        if (!resultList.isEmpty()) {
+            yes = true;
+        }
+        System.out.println("Time for test 16 " + totalTime16);
+        assertEquals(true, yes);
+    }
+
+    @Test
+    public void getcitiesFromLocation2() {
+        Neo4jDB psql = new Neo4jDB();
+        GeoLocation gloc = new GeoLocation();
+        gloc.setLatitude(11f);
+        gloc.setLongitude(-12f);
+        boolean yes = false;
+        long startTime = System.currentTimeMillis();
+        List<Book> resultList = psql.GetBooksByLocation(gloc);
+        long endTime = System.currentTimeMillis();
+        totalTime17 = endTime - startTime;
+        if (!resultList.isEmpty()) {
+            yes = true;
+        }
+        System.out.println("Time for test 17 " + totalTime17);
+        assertEquals(true, yes);
+    }
+
+    @Test
+    public void getcitiesFromLocation3() {
+        Neo4jDB psql = new Neo4jDB();
+        GeoLocation gloc = new GeoLocation();
+        gloc.setLatitude(40f);
+        gloc.setLongitude(16f);
+        boolean yes = false;
+        long startTime = System.currentTimeMillis();
+        List<Book> resultList = psql.GetBooksByLocation(gloc);
+        long endTime = System.currentTimeMillis();
+        totalTime18 = endTime - startTime;
+        if (!resultList.isEmpty()) {
+            yes = true;
+        }
+         System.out.println("Time for test 18 " + totalTime18);
+        assertEquals(true, yes);
+    }
+
+    @Test
+    public void getcitiesFromLocation4() {
+        Neo4jDB psql = new Neo4jDB();
+        GeoLocation gloc = new GeoLocation();
+        gloc.setLatitude(32.20487f);
+        gloc.setLongitude(-95.85552f);
+        boolean yes = false;
+        long startTime = System.currentTimeMillis();
+        List<Book> resultList = psql.GetBooksByLocation(gloc);
+        long endTime = System.currentTimeMillis();
+        totalTime19 = endTime - startTime;
+        if (!resultList.isEmpty()) {
+            yes = true;
+        }
+        System.out.println("Time for test 19 " + totalTime19);
+        assertEquals(true, yes);
+    }
+
+    @Test
+    public void getcitiesFromLocation5() {
+        Neo4jDB psql = new Neo4jDB();
+        GeoLocation gloc = new GeoLocation();
+        gloc.setLatitude(34.25704f);
+        gloc.setLongitude(-85.16467f);
+        boolean yes = false;
+        long startTime = System.currentTimeMillis();
+        List<Book> resultList = psql.GetBooksByLocation(gloc);
+        long endTime = System.currentTimeMillis();
+        totalTime20 = endTime - startTime;
+        if (!resultList.isEmpty()) {
+            yes = true;
+        }
+        System.out.println("Time for test 20 " + totalTime20);
+        assertEquals(true, yes);
+    }
     
-//     @Test
-//    public void testGetBookAndAuthor() {
-//        System.out.println("GetBookAndAuthor");
-//        String Name = "London";
-//        Neo4jDB instance = new Neo4jDB();
-//        List<Book> expResult = new ArrayList<>();
-//        Book b1 = new Book("Søren Nielsen", "Phantom");
-//        expResult.add(b1);
-//        List<Book> result = instance.GetBookAndAuthor(Name);
-//        assertEquals(expResult.get(0).Author, result.get(0).Author);
-//
-//          
-//    }
+   
+    
+     @Test
+    public void testGetBookAndAuthor() {
+        System.out.println("GetBookAndAuthor");
+        String Name = "London";
+        Neo4jDB instance = new Neo4jDB();
+        List<Book> expResult = new ArrayList<>();
+        Book b1 = new Book("Søren Nielsen", "Phantom");
+        expResult.add(b1);
+        List<Book> result = instance.GetBookAndAuthor(Name);
+        assertEquals(expResult.get(0).Author, result.get(0).Author);
+
+          
+    }
     
     @Test
     public void testGetBookAndAuthorNoInput()
@@ -491,9 +459,9 @@ public class Neo4jDBTest {
         assertEquals(books.get(0).Title, "No Books Found");
     }
 
-//    /**
-//     * Test of PlotCitiesFromBook method, of class Neo4jDB.
-//     */
+    /**
+     * Test of PlotCitiesFromBook method, of class Neo4jDB.
+     */
     @Test
     public void testPlotCitiesFromBookStump() {
         System.out.println("PlotCitiesFromBook");
@@ -568,7 +536,7 @@ public class Neo4jDBTest {
         List<EverythingByAuthor> cities =  instance. PlotCitiesAndBooksFromAuthor("sjjjjl");
         assertEquals(cities.get(0).cityName, "No City Found");
     }
-//  
+  
     @Test
     public void testGetBooksByLocationStump()
     {
@@ -581,14 +549,14 @@ public class Neo4jDBTest {
         assertEquals(expResult.get(0).Author, result.get(0).Author);
     }
     
-//    @Test
-//    public void testGetBooksByLocationNegativeInputStump()
-//    {
-//        GeoLocation location = new GeoLocation(-1f,-1f);
-//        StumpDB instance = new StumpDB();
-//        List<Book> books =  instance.GetBooksByLocation(location);
-//        assertEquals(books.get(0).Title, "No Books Found");
-//    }
+    @Test
+    public void testGetBooksByLocationNegativeInputStump()
+    {
+        GeoLocation location = new GeoLocation(-1f,-1f);
+        StumpDB instance = new StumpDB();
+        List<Book> books =  instance.GetBooksByLocation(location);
+        assertEquals(books.get(0).Title, "No Books Found");
+    }
     
     @Test
     public void testGetBooksByLocationWrongInputStump()
@@ -599,50 +567,50 @@ public class Neo4jDBTest {
         assertEquals(books.get(0).Title, "No Books Found");
     }
     /**
-//     * Test of PlotCitiesFromAuthor method, of class Neo4jDB.
-//     */
-//    @Test
-//    public void testPlotCitiesFromAuthor() {
-//        System.out.println("PlotCitiesFromAuthor");
-//        String AuthorName = "Søren Nielsen";
-//        Neo4jDB instance = new Neo4jDB();
-//        List<City> expResult = new ArrayList<>();
-//         City c1 = new City("New York", new GeoLocation());
-//        City c2 = new City("London", new GeoLocation());
-//        expResult.add(c1);
-//        expResult.add(c2);
-//        List<EverythingByAuthor> result = instance.PlotCitiesAndBooksFromAuthor(AuthorName);
-//         assertEquals(expResult.get(0).Name, result.get(0).cityName);
-//        assertEquals(expResult.get(1).Name, result.get(1).cityName);
-//    }
+     * Test of PlotCitiesFromAuthor method, of class Neo4jDB.
+     */
+    @Test
+    public void testPlotCitiesFromAuthor() {
+        System.out.println("PlotCitiesFromAuthor");
+        String AuthorName = "Søren Nielsen";
+        Neo4jDB instance = new Neo4jDB();
+        List<City> expResult = new ArrayList<>();
+         City c1 = new City("New York", new GeoLocation());
+        City c2 = new City("London", new GeoLocation());
+        expResult.add(c1);
+        expResult.add(c2);
+        List<EverythingByAuthor> result = instance.PlotCitiesAndBooksFromAuthor(AuthorName);
+         assertEquals(expResult.get(0).Name, result.get(0).cityName);
+        assertEquals(expResult.get(1).Name, result.get(1).cityName);
+    }
     
-//     @Test
-//        public void testPlotCitiesFromBook() {
-//        System.out.println("PlotCitiesFromBook");
-//        String BookName = "Phantom";
-//        Neo4jDB instance = new Neo4jDB();
-//        List<City> expResult = new ArrayList<>();
-//        City c1 = new City("New York", new GeoLocation());
-//        City c2 = new City("London", new GeoLocation());
-//        expResult.add(c1);
-//        expResult.add(c2);
-//        List<City> result = instance.PlotCitiesFromBook(BookName);
-//        assertEquals(expResult.get(0).Name, result.get(0).Name);
-//        assertEquals(expResult.get(1).Name, result.get(1).Name);
-//    }
-//
-//    /**
-//     * Test of GetBooksByLocation method, of class Neo4jDB.
-//     */
-//    @Test
-//    public void testGetBooksByLocation() {
-//        System.out.println("GetBooksByLocation");
-//        GeoLocation Location = new GeoLocation(42.2f,42.2f);
-//        Neo4jDB instance = new Neo4jDB();
-//        List<Book> expResult = new ArrayList<Book>();
-//        List<Book> result = instance.GetBooksByLocation(Location);
-//        Book b1 = new Book("Søren Nielsen", "Phantom");
-//        expResult.add(b1);
-//        assertEquals(expResult.get(0).Author, result.get(0).Author);
-//    }
+     @Test
+        public void testPlotCitiesFromBook() {
+        System.out.println("PlotCitiesFromBook");
+        String BookName = "Phantom";
+        Neo4jDB instance = new Neo4jDB();
+        List<City> expResult = new ArrayList<>();
+        City c1 = new City("New York", new GeoLocation());
+        City c2 = new City("London", new GeoLocation());
+        expResult.add(c1);
+        expResult.add(c2);
+        List<City> result = instance.PlotCitiesFromBook(BookName);
+        assertEquals(expResult.get(0).Name, result.get(0).Name);
+        assertEquals(expResult.get(1).Name, result.get(1).Name);
+    }
+
+    /**
+     * Test of GetBooksByLocation method, of class Neo4jDB.
+     */
+    @Test
+    public void testGetBooksByLocation() {
+        System.out.println("GetBooksByLocation");
+        GeoLocation Location = new GeoLocation(42.2f,42.2f);
+        Neo4jDB instance = new Neo4jDB();
+        List<Book> expResult = new ArrayList<Book>();
+        List<Book> result = instance.GetBooksByLocation(Location);
+        Book b1 = new Book("Søren Nielsen", "Phantom");
+        expResult.add(b1);
+        assertEquals(expResult.get(0).Author, result.get(0).Author);
+    }
 }

@@ -125,7 +125,7 @@ public class Neo4jDB implements IDBObject {
             Record record = result.next();
 //            City c = new City(record.get("name").asString(), new GeoLocation()); 
 //            cities.add(c);
-            EverythingByAuthor EBA = new EverythingByAuthor(record.get("title").asString(), record.get("name").asString(), record.get("latitude").asFloat(), record.get("longitude").asFloat());
+            EverythingByAuthor EBA = new EverythingByAuthor(record.get("title").asString(),record.get("name").asString(), record.get("latitude").asFloat(), record.get("longitude").asFloat());
             Everylist.add(EBA);
             }
           }
